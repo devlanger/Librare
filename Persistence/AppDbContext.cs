@@ -5,10 +5,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Persistence
 {
-	public class DbContext : IdentityDbContext<AppUser>
+	public class AppDbContext : IdentityDbContext<AppUser>
 	{
-		public DbContext(DbContextOptions<DbContext> options) : base(options)
-		{
+        public DbSet<Book> Books { get; set; }
+
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+		{   
 
 		}
 
@@ -17,7 +19,6 @@ namespace Persistence
             base.OnModelCreating(builder);
 
             //TODO: Automapper etc...
-
         }
     }
 }
